@@ -36,7 +36,7 @@ bzl_library(
         value = global_ if bazel_version < parse_version(version) else "None"
         # If the legacy_globals is available, we take the value from it.
         # The value is populated by --incompatible_autoload_externally and may apply to older Bazel versions
-        lines.append("    %s = getattr(getattr(native, 'legacy_globals', None), '%s', %s)," % (global_, global_, value))
+        lines.append("    %s = getattr(getattr(native, 'legacy_symbols', None), '%s', %s)," % (global_, global_, value))
 
     lines.append(")")
 
